@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import ExperienceSection from './components/ExperienceSection/ExperienceSection';
 import LandingSection from './components/LandingSection/LandingSection';
 import NavigationBar from './components/NavigationBar/NavigationBar';
-import { theme } from './theme';
+import theme from './theme/theme';
 
 const App: React.FC = () => {
     return (
