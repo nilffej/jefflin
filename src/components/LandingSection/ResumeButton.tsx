@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { links } from '../../common/links';
+import { links } from '../../data/links';
 import HoverableButton from '../HoverableButton/HoverableButton';
 import Icon from '../Icon/Icon';
 
@@ -31,7 +31,7 @@ const Container = styled.div`
     align-items: center;
 `;
 
-const Text = styled.span`
+const Text = styled.div`
     margin: 0px ${({ theme }) => theme.px.xsmall};
 
     font-weight: ${({ theme }) => theme.fontWeight.semibold};

@@ -16,8 +16,9 @@ const Container = styled.a`
     color: unset;
     text-decoration: unset;
 
+    transition: transform 250ms;
+
     &:hover {
-        transition: transform 250ms;
         transform: scale(1.05);
         cursor: pointer;
     }

@@ -21,7 +21,8 @@ declare module 'styled-components' {
             large: string;
         },
         fontWeight: {
-            medium: semibold,
+            light: number,
+            medium: number,
             semibold: number
         }
     }

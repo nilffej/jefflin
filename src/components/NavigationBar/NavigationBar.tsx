@@ -34,5 +34,7 @@ const NavBar = styled.div`
     gap: ${({ theme }) => theme.px.xlarge};
 
     position: fixed;
+    z-index: 1;
+    background-color: white;
     border-right: 1px solid rgba(0, 0, 0, 0.2);
 `;

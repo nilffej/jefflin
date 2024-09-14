@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { links } from '../../common/links';
 import { HOME_SECTION } from '../../common/sections';
-import { SectionContainer } from '../../common/styled';
+import { SectionContainer, Text } from '../../common/styled';
+import { links } from '../../data/links';
 import JeffPhoto from '../../images/Jeff - BW.jpg';
 import HoverableButton from '../HoverableButton/HoverableButton';
 import Icon from '../Icon/Icon';
@@ -65,20 +65,20 @@ const RightPanel = styled.div`
     justify-content: center;
 `;
 
-const TitleText = styled.span`
+const TitleText = styled(Text)`
     font-size: ${({ theme }) => theme.fontSize.large};
     font-weight: ${({ theme }) => theme.fontWeight.medium};
 
     margin-bottom: ${({ theme }) => theme.px.small};
 `;
 
-const TitleSubtext = styled.span`
+const TitleSubtext = styled(Text)`
     font-size: ${({ theme }) => theme.fontSize.medium};
 
     margin-bottom: 128px;
 `;
 
-const BoldedText = styled.span`
+const BoldedText = styled(Text)`
     font-weight: ${({ theme }) => theme.fontWeight.semibold};
 `;
 

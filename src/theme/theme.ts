@@ -19,6 +19,7 @@ const theme: DefaultTheme = {
         large: '84px',
     },
     fontWeight: {
+        light: 200,
         medium: 500,
         semibold: 600,
     }
