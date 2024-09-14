@@ -19,6 +19,10 @@ declare module 'styled-components' {
             base: string;
             medium: string;
             large: string;
+        },
+        fontWeight: {
+            medium: semibold,
+            semibold: number
         }
     }
 }

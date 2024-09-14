@@ -3,7 +3,7 @@ import { PixelSize } from "./styled";
 
 const theme: DefaultTheme = {
     px: {
-        xxsmall: '4px',
+        xxsmall: '8px',
         xsmall: '12px',
         small: '16px',
         base: '24px',
@@ -17,6 +17,10 @@ const theme: DefaultTheme = {
         base: '24px',
         medium: '36px',
         large: '84px',
+    },
+    fontWeight: {
+        medium: 500,
+        semibold: 600,
     }
 };
 
