@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import { Text } from '../../common/styled';
 import { ExperienceData } from '../../data/experience';
 import Icon from '../Icon/Icon';
 
