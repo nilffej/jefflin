@@ -2,12 +2,10 @@ import styled from "styled-components";
 
 export const SectionContainer = styled.div`
     height: 100vh;
-    padding-left: 74px;
 
-    position: relative;
-    z-index: 0;
-    
-    scroll-snap-align: start;
+    /* @media only screen and (max-width: 768px) {
+        padding-left: ${({ theme }) => theme.px.large};
+    } */
 `;
 
 export const Text = styled.span`

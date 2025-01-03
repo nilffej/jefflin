@@ -26,6 +26,10 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: ${({ theme }) => theme.px.large};
+
+    @media only screen and (max-width: 600px) {
+        padding: ${({ theme }) => theme.px.xlarge} ${({ theme }) => theme.px.large};
+    }
 `;
 
 const Header = styled(Text)`

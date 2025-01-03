@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 import { IconTitle } from '../../common/icons';
 import { ABOUT_SECTION, EXPERIENCE_SECTION, HOME_SECTION, SKILLS_SECTION, sectionsList } from '../../common/sections';
@@ -18,7 +18,6 @@ const NavigationBar: React.FC = () => {
     return (
         <NavBar>
             <IconsColumn>
-                <ScrollTracker />
                 {sectionsList.map((title, index) => (
                     <NavBarIcon key={index} selected={selectedSection === title} icon={sectionIcons[title]} />
                 ))}
@@ -31,16 +30,20 @@ export default NavigationBar;
 
 const NavBar = styled.div`
     height: 100vh;
-    width: 74px;
+    width: 4.625rem;
 
+    position: fixed;
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
 
-    position: fixed;
-    z-index: 1;
-    background-color: white;
+    background-color: #faf9f6;
     border-right: 1px solid rgba(0, 0, 0, 0.2);
+
+    @media only screen and (max-width: 600px), screen and (max-height: 480px) {
+        display: none;
+    }
 `;
 
 const IconsColumn = styled.div`
@@ -51,22 +54,4 @@ const IconsColumn = styled.div`
     gap: ${({ theme }) => theme.px.xlarge};
 
     position: relative;
-`;
-
-const scrollAnimation = keyframes`
-    0% { top: 0%; }
-    100% { top: calc(100% - 42px); }
-`;
-
-const ScrollTracker = styled.div`
-    height: ${({ theme }) => theme.px.large};
-    width: ${({ theme }) => theme.px.large};
-    border-radius: 50%;
-
-    position: absolute;
-    top: 0;
-    background-color: red;
-
-    animation: ${scrollAnimation} linear;
-    animation-timeline: --page-scroll;
 `;

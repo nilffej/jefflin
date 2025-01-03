@@ -25,7 +25,7 @@ const Container = styled.div`
 
     background-color: black;
     font-weight: ${({ theme }) => theme.fontWeight.medium};
-    color: white;
+    color: #faf9f6;
 
     display: flex;
     align-items: center;

@@ -55,14 +55,19 @@ const LeftPanel = styled.div`
     justify-content: center;
     flex-grow: 1;
 
-    box-shadow: 16px 0px 24px rgba(0, 0, 0, 0.75);
-    clip-path: inset(0px -100% 0px 0px);
+    @media only screen and (max-width: 768px), screen and (max-height: 600px) {
+        padding-left: ${({ theme }) => theme.px.large};
+    }
 `;
 
 const RightPanel = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    @media only screen and (max-width: 768px) {
+        display: none;
+    }
 `;
 
 const TitleText = styled(Text)`
