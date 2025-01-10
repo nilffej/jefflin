@@ -1,4 +1,5 @@
 export type ExperienceData = {
+    id: number,
     company: string,
     title: string,
     startDate: string,
@@ -9,6 +10,7 @@ export type ExperienceData = {
 
 export const experience: ExperienceData[] = [
     {
+        id: 5,
         company: "Here™",
         title: "software engineer",
         startDate: "january 2024",
@@ -17,6 +19,7 @@ export const experience: ExperienceData[] = [
         skills: []
     },
     {
+        id: 4,
         company: "Vail Systems",
         title: "software engineer intern",
         startDate: "june 2023",
@@ -36,6 +39,7 @@ export const experience: ExperienceData[] = [
         ]
     },
     {
+        id: 3,
         company: "Noahs’ Arc Capital Management",
         title: "frontend developer",
         startDate: "june 2023",
@@ -54,6 +58,7 @@ export const experience: ExperienceData[] = [
         ]
     },
     {
+        id: 2,
         company: "OpenFin",
         title: "engineering intern",
         startDate: "may 2022",
@@ -72,6 +77,7 @@ export const experience: ExperienceData[] = [
         ]
     },
     {
+        id: 1,
         company: "Dayflect",
         title: "flutter mobile developer",
         startDate: "january 2022",

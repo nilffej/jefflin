@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import { EXPERIENCE_SECTION } from '../../common/sections';
@@ -6,13 +7,23 @@ import { experience } from '../../data/experience';
 import ExpandableExperienceItem from './ExpandableExperienceItem';
 
 const ExperienceSection: React.FC = () => {
+    const [activeItem, setActiveItem] = useState<number | null>(null);
+
     return (
         <SectionContainer id={EXPERIENCE_SECTION}>
             <Container>
-                <Header>experience</Header>
-                {experience.map((item) => (
-                    <ExpandableExperienceItem experience={item} />
-                ))}
+                {activeItem ? <Header onClick={() => setActiveItem(null)}>back</Header> : <Header>experience</Header>}
+                <PositionedContainer>
+                    {experience.map((item, index) => (
+                        <ExpandableExperienceItem
+                            key={`experience-item-${item.id}`}
+                            experience={item}
+                            activeItem={activeItem}
+                            index={index}
+                            onClick={() => setActiveItem(item.id)}
+                        />
+                    ))}
+                </PositionedContainer>
             </Container>
         </SectionContainer>
     );
@@ -23,13 +34,19 @@ export default ExperienceSection;
 const Container = styled.div`
     padding: ${({ theme }) => theme.px.xxlarge} ${({ theme }) => theme.px.xlarge};
 
-    display: flex;
-    flex-direction: column;
-    gap: ${({ theme }) => theme.px.large};
-
     @media only screen and (max-width: 600px) {
         padding: ${({ theme }) => theme.px.xlarge} ${({ theme }) => theme.px.large};
     }
+`;
+
+const PositionedContainer = styled.div`
+    margin-top: ${({ theme }) => theme.px.large};
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: ${({ theme }) => theme.px.large};
 `;
 
 const Header = styled(Text)`

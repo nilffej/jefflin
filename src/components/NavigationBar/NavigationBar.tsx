@@ -33,6 +33,8 @@ const NavBar = styled.div`
     width: 4.625rem;
 
     position: fixed;
+    z-index: 99;
+
     display: flex;
     flex-shrink: 0;
     align-items: center;

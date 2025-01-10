@@ -11,6 +11,12 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         background: #FAF9F6;
+
+        cursor: default;
+
+        user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
     }
 `;
 

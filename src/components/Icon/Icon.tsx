@@ -6,14 +6,15 @@ import { PixelSize } from '../../theme/styled';
 type Size = keyof PixelSize;
 
 interface NavBarIconProps {
+    className?: string;
     icon: IconTitle;
     size: Size;
 }
 
-const Icon: React.FC<NavBarIconProps> = ({ icon, size }) => {
+const Icon: React.FC<NavBarIconProps> = ({ className, icon, size }) => {
     const IconComponent = iconMap[icon];
     return (
-        <IconWrapper size={size}>
+        <IconWrapper className={className} size={size}>
             <IconComponent />
         </IconWrapper>
     );
