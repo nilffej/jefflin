@@ -24,8 +24,9 @@ export default App;
 const Container = styled.div`
     display: flex;
     flex-direction: column;
+    margin-left: 4.625rem;
 
-    @media only screen and (min-width: 480px) {
-        margin-left: 4.625rem;
+    @media only screen and (max-width: 600px), screen and (max-height: 480px) {
+        margin-left: 0rem;
     }
 `;

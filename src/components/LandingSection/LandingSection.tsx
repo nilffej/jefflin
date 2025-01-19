@@ -55,7 +55,7 @@ const LeftPanel = styled.div`
     justify-content: center;
     flex-grow: 1;
 
-    @media only screen and (max-width: 768px), screen and (max-height: 600px) {
+    @media only screen and (max-height: 600px) {
         padding-left: ${({ theme }) => theme.px.large};
     }
 `;
