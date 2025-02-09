@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import { EXPERIENCE_SECTION } from '../../common/sections';
@@ -8,19 +8,25 @@ import ExpandableExperienceItem from './ExpandableExperienceItem';
 
 const ExperienceSection: React.FC = () => {
     const [activeItem, setActiveItem] = useState<number | null>(null);
+    const columnContainerRef = useRef() as RefObject<HTMLDivElement>;
+
+    const getDistanceToContainterTop = useCallback(() => {
+        return columnContainerRef.current!.getBoundingClientRect().top;
+    }, []);
 
     return (
         <SectionContainer id={EXPERIENCE_SECTION}>
             <Container>
                 {activeItem ? <Header onClick={() => setActiveItem(null)}>back</Header> : <Header>experience</Header>}
-                <PositionedContainer>
+                <PositionedContainer ref={columnContainerRef}>
                     {experience.map((item, index) => (
                         <ExpandableExperienceItem
                             key={`experience-item-${item.id}`}
                             experience={item}
                             activeItem={activeItem}
                             index={index}
-                            onClick={() => setActiveItem(item.id)}
+                            setActiveItem={setActiveItem}
+                            getDistanceToContainterTop={getDistanceToContainterTop}
                         />
                     ))}
                 </PositionedContainer>
