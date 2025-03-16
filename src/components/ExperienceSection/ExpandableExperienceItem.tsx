@@ -1,15 +1,15 @@
 import { MutableRefObject, useEffect, useRef, useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
-import { Text } from '../../common/styled';
 import { ExperienceData } from '../../data/experience';
 import Icon from '../Icon/Icon';
+import ExperienceDescription from './ExperienceDescription';
 
 interface ExpandableExperienceItemProps {
     experience: ExperienceData;
     activeItem: number | null;
     index: number;
-    setActiveItem: (id: number) => void;
+    setActiveItem: (id: number | null) => void;
     getDistanceToContainterTop: () => number;
 }
 
@@ -40,7 +40,11 @@ const ExpandableExperienceItem: React.FC<ExpandableExperienceItemProps> = ({
     }, [activeItem]);
 
     const handleClick = () => {
-        setActiveItem(id);
+        if (activeItem) {
+            setActiveItem(null);
+        } else {
+            setActiveItem(id);
+        }
     };
 
     return (
@@ -50,7 +54,12 @@ const ExpandableExperienceItem: React.FC<ExpandableExperienceItemProps> = ({
             $index={index}
             $distanceToColumnTop={distanceToColumnTop}
             $activated={activated}>
-            <Container onClick={handleClick} $shouldMoveOffscreen={shouldMoveOffscreen} $active={isActive}>
+            <Container
+                onClick={handleClick}
+                $shouldMoveOffscreen={shouldMoveOffscreen}
+                $active={isActive}
+                $activated={activated}
+                $activeIndex={(activeItem ?? 0) + 1}>
                 <ChevronIcon icon="chevron" size="base" $active={isActive} $index={index} />
                 <TextSection>
                     <CompanyText>{company}</CompanyText>
@@ -59,26 +68,30 @@ const ExpandableExperienceItem: React.FC<ExpandableExperienceItemProps> = ({
                     </RoleText>
                 </TextSection>
             </Container>
-            {isActive && activated && (
-                <Body>
-                    {descriptions.map((text) => (
-                        <Text>{text}</Text>
-                    ))}
-                </Body>
-            )}
+            <div style={{ position: 'relative' }}>
+                <ExperienceDescription
+                    isActive={isActive}
+                    activated={activated}
+                    company={company}
+                    descriptions={descriptions}
+                    skills={skills}
+                />
+            </div>
         </HoverableContainer>
     );
 };
 
 export default ExpandableExperienceItem;
 
-const animation = ($distanceToColumnTop: number) => keyframes`
+const animation = ($distanceToColumnTop: number) => {
+    return keyframes`
     from { 
         transform: translateY(-${$distanceToColumnTop}px);
     } to {
         transform: translateY(0px);
     }
 `;
+};
 
 const HoverableContainer = styled.div<{
     $active: boolean;
@@ -88,34 +101,36 @@ const HoverableContainer = styled.div<{
 }>`
     display: flex;
     flex-direction: column;
-    gap: ${({ theme }) => theme.px.medium};
 
-    transition: transform 100ms;
+    transition: transform 150ms;
 
     ${({ $active, $distanceToColumnTop, $index, $activated }) =>
         $active
             ? $activated
-                ? css`
+                ? // Item is activated and expanded
+                  css`
                       order: -1;
                       transition: unset;
                   `
-                : css`
+                : // Item was just clicked and is animating to top of the list
+                  css`
                       transition: transform calc(${75 * $index}ms + 100ms) 100ms;
                       transform: translateY(-${$distanceToColumnTop}px);
                   `
-            : css`
+            : // Item has been deactivated and is animating back to place in list
+              css`
+                  animation-fill-mode: backwards;
                   animation-name: ${animation($distanceToColumnTop)};
                   animation-duration: calc(${75 * $index}ms + 100ms);
+                  animation-delay: 200ms;
               `}
-
-    &:hover {
-        transform: ${({ theme, $active }) => !$active && `translateX(${theme.px.xsmall})`};
-    }
 `;
 
 const Container = styled.div<{
     $shouldMoveOffscreen: boolean;
     $active: boolean;
+    $activated: boolean;
+    $activeIndex: number;
 }>`
     position: relative;
     z-index: 0;
@@ -128,11 +143,18 @@ const Container = styled.div<{
     left: ${({ $shouldMoveOffscreen }) => ($shouldMoveOffscreen ? '-40rem' : '0')};
     opacity: ${({ $shouldMoveOffscreen }) => ($shouldMoveOffscreen ? '0%' : '100%')};
 
-    ${({ $shouldMoveOffscreen, $active }) => css`
+    transition: transform 150ms;
+
+    ${({ $shouldMoveOffscreen, $active, $activeIndex }) => css`
         transition:
-            left 500ms ${!$active && !$shouldMoveOffscreen && '100ms'},
-            opacity 200ms ${!$active && !$shouldMoveOffscreen && '100ms'};
+            transform 150ms,
+            left 500ms ${!$active && !$shouldMoveOffscreen && `calc(${75 * $activeIndex}ms + 300ms)`},
+            opacity 200ms ${!$active && !$shouldMoveOffscreen && `calc(${75 * $activeIndex}ms + 300ms)`};
     `}
+
+    &:hover {
+        transform: ${({ theme, $active, $activated }) => !($active || $activated) && `translateX(${theme.px.xsmall})`};
+    }
 `;
 
 const ChevronIcon = styled(Icon)<{ $active: boolean; $index: number }>`
@@ -153,29 +175,4 @@ const CompanyText = styled.div`
 
 const RoleText = styled.div`
     font-size: ${({ theme }) => theme.fontSize.base};
-`;
-
-const fadeIn = keyframes`
-    from { 
-        opacity: 0%;
-    } to {
-        opacity: 100%;
-    }
-`;
-
-const Body = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: ${({ theme }) => theme.px.medium};
-
-    font-size: ${({ theme }) => theme.fontSize.base};
-    font-weight: 300;
-
-    padding: 0px ${({ theme }) => theme.px.base};
-    ${({ theme }) => css`
-        margin-left: calc(${theme.px.base} + ${theme.px.large});
-    `};
-
-    animation-name: ${fadeIn};
-    animation-duration: 200ms;
 `;

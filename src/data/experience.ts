@@ -1,3 +1,22 @@
+export type Skill =
+    | 'Bootstrap'
+    | 'D3.js'
+    | 'Dart'
+    | 'Express'
+    | 'Firebase'
+    | 'Flutter'
+    | 'Java'
+    | 'Javascript'
+    | 'MongoDB'
+    | 'Next.js'
+    | 'NoSQL'
+    | 'PostgreSQL'
+    | 'React'
+    | 'Redux'
+    | 'SQL'
+    | 'Spring Boot'
+    | 'Typescript';
+
 export type ExperienceData = {
     id: number,
     company: string,
@@ -5,7 +24,7 @@ export type ExperienceData = {
     startDate: string,
     endDate: string,
     descriptions: string[],
-    skills: string[]
+    skills: Skill[]
 }
 
 export const experience: ExperienceData[] = [
@@ -16,7 +35,13 @@ export const experience: ExperienceData[] = [
         startDate: "january 2024",
         endDate: "current",
         descriptions: [],
-        skills: []
+        skills: [
+            "React",
+            "Redux",
+            "Express",
+            "PostgreSQL",
+            "Typescript"
+        ]
     },
     {
         id: 4,
@@ -30,11 +55,11 @@ export const experience: ExperienceData[] = [
             "Revamped call metric graphs using D3.js on company-wide dashboard for better interpretability"
         ],
         skills: [
-            "Bootstrap",
             "Javascript",
             "Java",
             "Spring Boot",
             "SQL",
+            "Bootstrap",
             "D3.js"
         ]
     },
@@ -72,8 +97,8 @@ export const experience: ExperienceData[] = [
         ],
         skills: [
             "React",
+            "Redux",
             "Typescript",
-            "MongoDB",
         ]
     },
     {

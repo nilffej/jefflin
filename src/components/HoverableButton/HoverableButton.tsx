@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface HoverableButtonProps {
-    children: React.ReactNode;
+interface HoverableButtonProps extends React.PropsWithChildren {
     link?: string;
 }
 

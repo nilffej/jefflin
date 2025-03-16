@@ -1,4 +1,4 @@
-import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
+import { RefObject, useCallback, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import { EXPERIENCE_SECTION } from '../../common/sections';
