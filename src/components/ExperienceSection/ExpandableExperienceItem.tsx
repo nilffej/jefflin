@@ -11,6 +11,7 @@ interface ExpandableExperienceItemProps {
     index: number;
     setActiveItem: (id: number | null) => void;
     getDistanceToContainterTop: () => number;
+    scrollToTopOfSection: () => void;
 }
 
 const ExpandableExperienceItem: React.FC<ExpandableExperienceItemProps> = ({
@@ -18,7 +19,8 @@ const ExpandableExperienceItem: React.FC<ExpandableExperienceItemProps> = ({
     activeItem,
     index,
     setActiveItem,
-    getDistanceToContainterTop
+    getDistanceToContainterTop,
+    scrollToTopOfSection
 }) => {
     const { id, company, title, startDate, endDate, descriptions, skills } = experience;
     const shouldMoveOffscreen = activeItem !== null && activeItem !== id;
@@ -28,6 +30,13 @@ const ExpandableExperienceItem: React.FC<ExpandableExperienceItemProps> = ({
     const [activated, setActivated] = useState<boolean>(false);
 
     const isActive = activeItem === id;
+
+    useEffect(() => {
+        if (activated && containerRef.current) {
+            console.log('scrolling');
+            scrollToTopOfSection();
+        }
+    }, [isActive, activated]);
 
     useEffect(() => {
         if (isActive) {
@@ -50,9 +59,9 @@ const ExpandableExperienceItem: React.FC<ExpandableExperienceItemProps> = ({
     return (
         <HoverableContainer
             ref={containerRef}
-            $active={isActive}
             $index={index}
             $distanceToColumnTop={distanceToColumnTop}
+            $active={isActive}
             $activated={activated}>
             <Container
                 onClick={handleClick}
@@ -94,9 +103,9 @@ const animation = ($distanceToColumnTop: number) => {
 };
 
 const HoverableContainer = styled.div<{
-    $active: boolean;
     $index: number;
     $distanceToColumnTop: number;
+    $active: boolean;
     $activated: boolean;
 }>`
     display: flex;

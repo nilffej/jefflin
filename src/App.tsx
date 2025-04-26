@@ -1,6 +1,7 @@
 import styled, { ThemeProvider } from 'styled-components';
 
 import ExperienceSection from './components/ExperienceSection/ExperienceSection';
+import IntroductionSection from './components/IntroductionSection/IntroductionSection';
 import LandingSection from './components/LandingSection/LandingSection';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import GlobalStyle from './theme/globalStyles';
@@ -13,6 +14,7 @@ const App: React.FC = () => {
             <NavigationBar />
             <Container>
                 <LandingSection />
+                <IntroductionSection />
                 <ExperienceSection />
             </Container>
         </ThemeProvider>
@@ -22,9 +24,10 @@ const App: React.FC = () => {
 export default App;
 
 const Container = styled.div`
+    margin-left: 4.625rem;
     display: flex;
     flex-direction: column;
-    margin-left: 4.625rem;
+    align-items: center;
 
     @media only screen and (max-width: 600px), screen and (max-height: 480px) {
         margin-left: 0rem;

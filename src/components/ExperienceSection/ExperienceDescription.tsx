@@ -3,7 +3,6 @@ import styled, { css, keyframes } from 'styled-components';
 
 import { Text } from '../../common/styled';
 import { Skill } from '../../data/experience';
-import ScrollShadowContainer from './ScrollContainer/ScrollContainer';
 import SkillsSection from './SkillsSection';
 
 interface ExperienceDescriptionProps {
@@ -22,7 +21,7 @@ const ExperienceDescription: React.FC<ExperienceDescriptionProps> = ({
     skills
 }) => {
     return (
-        <Container $active={isActive} $activated={activated} height={'60vh'}>
+        <Container $active={isActive} $activated={activated}>
             <Body>
                 <DescriptionSection>
                     {descriptions.map((text, index) => (
@@ -37,7 +36,8 @@ const ExperienceDescription: React.FC<ExperienceDescriptionProps> = ({
 
 export default ExperienceDescription;
 
-const Container = styled(ScrollShadowContainer)<{ $active: boolean; $activated: boolean }>`
+const Container = styled.div<{ $active: boolean; $activated: boolean }>`
+    position: absolute;
     margin-top: ${({ theme }) => theme.px.base};
 
     ${({ $active, $activated }) =>
@@ -77,6 +77,7 @@ const Body = styled.div`
     gap: ${({ theme }) => theme.px.xlarge};
 
     margin-left: ${({ theme }) => theme.px.large};
+    margin-bottom: ${({ theme }) => theme.px.xlarge};
     padding: ${({ theme }) => theme.px.xsmall} ${({ theme }) => theme.px.base};
 `;
 

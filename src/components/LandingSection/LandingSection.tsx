@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { HOME_SECTION } from '../../common/sections';
-import { SectionContainer, Text } from '../../common/styled';
+import { Text } from '../../common/styled';
 import { links } from '../../data/links';
 import JeffPhoto from '../../images/Jeff - BW.jpg';
 import HoverableButton from '../HoverableButton/HoverableButton';
@@ -10,7 +10,7 @@ import ResumeButton from './ResumeButton';
 
 const LandingSection: React.FC = () => {
     return (
-        <SectionContainer id={HOME_SECTION}>
+        <LandingSectionContainer id={HOME_SECTION}>
             <Row>
                 <LeftPanel>
                     <TitleText>jeff lin</TitleText>
@@ -33,11 +33,18 @@ const LandingSection: React.FC = () => {
                     <Image src={JeffPhoto} />
                 </RightPanel>
             </Row>
-        </SectionContainer>
+        </LandingSectionContainer>
     );
 };
 
 export default LandingSection;
+
+const LandingSectionContainer = styled.div`
+    height: 98vh;
+    height: 98lvh;
+    width: 100%;
+    box-shadow: 0px 1em 3em rgba(0, 0, 0, 0.2);
+`;
 
 const Row = styled.div`
     display: flex;
@@ -64,8 +71,10 @@ const RightPanel = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: ${({ theme }) => theme.px.medium};
 
     @media only screen and (max-width: 768px) {
+        padding: unset;
         display: none;
     }
 `;

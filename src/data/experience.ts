@@ -34,7 +34,12 @@ export const experience: ExperienceData[] = [
         title: "software engineer",
         startDate: "january 2024",
         endDate: "current",
-        descriptions: [],
+        descriptions: [
+            "Develop core features in Typescript and React for Electron-based enterprise browser and productivity environment targeting 1500+ end-users under a $725k annual contract obtaining the company’s first customer of newest flagship",
+            "Improve and maintain cloud platform SaaS offering built on React, Express, and PostgreSQL",
+            "Author architectural design proposals and assist in defining epics, stories, and acceptance criterias for features",
+            "Advise in live customer debugging calls with support engineering team and fix customer and QA reported bugs"
+        ],
         skills: [
             "React",
             "Redux",
@@ -50,9 +55,9 @@ export const experience: ExperienceData[] = [
         startDate: "june 2023",
         endDate: "august 2023",
         descriptions: [
-            "Upgraded internal platforms to use Bootstrap 5.0 and Javascript to improve usability for 30+ engineers",
-            "Maintained and refactored Java Spring Boot MVC and SQL database models to decrease codebase complexity",
-            "Revamped call metric graphs using D3.js on company-wide dashboard for better interpretability"
+            "Upgraded internal tool platforms using Javascript and Bootstrap 5.0 to improve usability for 30+ engineers",
+            "Revamped metric graphs on company-wide dashboard using D3.js to improve interpretability for 250+ employees",
+            "Maintained and refactored Java Spring Boot MVC and SQL models to reduce tech debt and code complexity"
         ],
         skills: [
             "Javascript",
@@ -70,16 +75,16 @@ export const experience: ExperienceData[] = [
         startDate: "june 2023",
         endDate: "august 2023",
         descriptions: [
-            "Developed modular dashboard using Next.js and Redux to better visualize data, such as option chain metrics and hedging sensitivity analysis, for enhanced trader experience and information digestibility",
-            "Managed user data and custom workspace configurations with MongoDB database",
-            "Collaborated with lead traders to identify pain points on existing platforms and design more capable features for more optimized workflows"
+            "Built modular dashboard using Next.js and Redux to visualize options chain metrics and enhance trader UX",
+            "Managed user data and custom dashboard configurations with MongoDB database",
+            "Collaborated with traders to identify pain points on existing platforms and iterate more optimized workflows"
         ],
         skills: [
             "React",
             "Redux",
             "Next.js",
             "Typescript",
-            "MongoDB",
+            "MongoDB"
         ]
     },
     {
@@ -89,11 +94,10 @@ export const experience: ExperienceData[] = [
         startDate: "may 2022",
         endDate: "august 2022",
         descriptions: [
-            "Planned and developed 6 features and fixed 17 UI/UX bugs using React.js for primary product utilized by major leading financial institutions, such as Barclays, J.P. Morgan, and Wells Fargo",
-            "Created IndexedDB data migration tool using Javascript for company domain migration initiative",
-            "Led initiative to improve engineering onboarding and assisted in developing new hiring interview challenges",
+            "Developed 6 features and fixed 17 bugs in React in Electron app for 6000+ end-users at major financial institutions",
+            "Created IndexedDB data migration tool using Javascript to facilitate company domain migration initiative",
+            "Led initiative to improve developer onboarding and assisted in design of new engineering interview challenges",
             "Redesigned user flows in collaboration with UI/UX team and tech leads for more intuitive usage"
-
         ],
         skills: [
             "React",
@@ -108,15 +112,15 @@ export const experience: ExperienceData[] = [
         startDate: "january 2022",
         endDate: "april 2022",
         descriptions: [
-            "Developed 6 major features using Flutter focused on increased user retention and improved user experience, including automated review prompting for increased App Store engagement and interactive app onboarding",
-            "Reduced data search speeds to near-zero while maintaining user data privacy by designing and implementing synchronization mechanism between local NoSQL database and encrypted data hosted on Firebase ",
+            "Developed 6 major features with Flutter focused on increased user retention and improved UX for 280+ daily users",
+            "Reduced user data query latencies by nearly 100% while maintaining data privacy by designing and implementing synchronization mechanism between on-device NoSQL database and encrypted data hosted on Firebase",
             "Wrote functional and integration tests and maintained documentation on new and existing features"
         ],
         skills: [
             "Flutter",
             "Dart",
             "Firebase",
-            "NoSQL",
+            "NoSQL"
         ]
     }
 ]
