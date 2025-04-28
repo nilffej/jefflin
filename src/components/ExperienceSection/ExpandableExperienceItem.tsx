@@ -33,7 +33,6 @@ const ExpandableExperienceItem: React.FC<ExpandableExperienceItemProps> = ({
 
     useEffect(() => {
         if (activated && containerRef.current) {
-            console.log('scrolling');
             scrollToTopOfSection();
         }
     }, [isActive, activated]);
@@ -108,6 +107,7 @@ const HoverableContainer = styled.div<{
     $active: boolean;
     $activated: boolean;
 }>`
+    cursor: pointer;
     display: flex;
     flex-direction: column;
 

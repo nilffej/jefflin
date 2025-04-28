@@ -15,6 +15,7 @@ const App: React.FC = () => {
             <Container>
                 <LandingSection />
                 <IntroductionSection />
+                <Separator />
                 <ExperienceSection />
             </Container>
         </ThemeProvider>
@@ -32,4 +33,10 @@ const Container = styled.div`
     @media only screen and (max-width: 600px), screen and (max-height: 480px) {
         margin-left: 0rem;
     }
+`;
+
+const Separator = styled.div`
+    margin: 6em 0em;
+    width: 16em;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
 `;

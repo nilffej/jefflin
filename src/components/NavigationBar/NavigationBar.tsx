@@ -8,8 +8,7 @@ import NavBarIcon from './NavBarIcon';
 const sectionIcons: { [section: string]: IconTitle } = {
     [HOME_SECTION]: 'home',
     [ABOUT_SECTION]: 'person',
-    [EXPERIENCE_SECTION]: 'work',
-    [SKILLS_SECTION]: 'code'
+    [EXPERIENCE_SECTION]: 'work'
 };
 
 const NavigationBar: React.FC = () => {
